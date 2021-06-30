@@ -208,7 +208,7 @@ export class Home extends Component {
     static renderRolling(users, key = 0, daysAmount=7) {
 
         let rolling = Home.rollingRetationXDays(users, daysAmount);
-        let message = isNaN(rolling) ? "The number of users who registered later than " + daysAmount + " days is zero. Rolling Retention " + daysAmount + " days is NaN." : "Rolling Retention " + daysAmount + " days is equal " + rolling + " %";
+        let message = isNaN(rolling) ? "The number of users who registered later than " + daysAmount + " days is zero. Rolling Retention " + daysAmount + " day is NaN." : "Rolling Retention " + daysAmount + " day is equal " + rolling.toFixed(2) + " %";
 
         return (
             <div key={key + 'rolling'}>{message}</div>
@@ -221,9 +221,6 @@ export class Home extends Component {
             <table className='table table-striped'>
                 <thead>
                     <tr>
-                        <th>
-                            <div className="field-header">Row Number</div>
-                        </th>
                         <th>
                             <div className="field-header">User Id</div>
                         </th>
@@ -241,9 +238,6 @@ export class Home extends Component {
                 <tbody>
                     {users.map((user, index) =>
                         < tr key={keyPrefix + index} id={'user' + index} >
-                            <td style={{ width: 100 }}>
-                                <div style={{ textAlign: 'center' }}>{index + 1}</div>
-                            </td>
                             <td>
                                 <InputBlock placeHolder="number" pattern="[0-9]{1,9}" value={user.id} id={"userID" + index} />
                             </td>
@@ -289,7 +283,7 @@ export class Home extends Component {
             max = Math.max(max, currentLifeTime);
             lifes.push(currentLifeTime);
         }
-        let addition = Math.ceil((max - min) / 50);
+        let addition = Math.ceil((max - min) / 25);
         if (min == max) {
             return [{ value: min, frequency: users.length }];
         }
@@ -327,8 +321,8 @@ export class Home extends Component {
     render() {
         const temperature = 'temper';
         const scale = 'scale';
-        let rolling = this.state.showCharts ? Home.renderRolling(this.state.userRetentionDtos, this.state.uniqueKey) : <p><em>Press calculate button to show rolling rotation info:)</em></p>;
-        let chart = this.state.showCharts ? Home.renderChart(this.state.userRetentionDtos, this.state.uniqueKey) : <p><em>Press calculate button to show life distribution :)</em></p>;
+        let rolling = this.state.showCharts ? Home.renderRolling(this.state.userRetentionDtos, this.state.uniqueKey) : <p><em>Press calculate button to show Rolling Retention info:)</em></p>;
+        let chart = this.state.showCharts ? Home.renderChart(this.state.userRetentionDtos, this.state.uniqueKey) : <p><em>Press calculate button to show Life Cycle distribution :)</em></p>;
         let table = this.state.loading ? <p><em>Loading...</em></p> : this.renderTable(this.state.userRetentionDtos, this.state.uniqueKey);
         return (
             <div >
@@ -338,7 +332,7 @@ export class Home extends Component {
                 <div>
                     <AddButton text="Add one more" onClick={this.onAdd} />
                     <CustomerButton text="Save" onClick={this.onSave} />
-                    <CustomerButton text="Calculate (not save)" onClick={this.onCalculate} />
+                    <CustomerButton text="Calculate" onClick={this.onCalculate} />
                 </div>
                 {table}
             </div>
