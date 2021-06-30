@@ -1,3 +1,6 @@
+using Mafmax.RollingRetention.App.Context;
+using Mafmax.RollingRetention.App.Repositories;
+using Mafmax.RollingRetention.App.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -20,9 +23,12 @@ namespace Mafmax.RollingRetention.App
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            
+            services.AddScoped<IUsersRetentionRepository, DatabaseRetentionRepository>();
+            services.AddScoped<IRetentionsService, UsersRetentionService>();
+            
             services.AddControllersWithViews();
-
+         
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {

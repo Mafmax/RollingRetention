@@ -1,0 +1,93 @@
+/* Provide sufficient contrast against white background */
+a
+{
+    color: #0366d6;
+}
+
+code
+{
+    color: #E01A76;
+}
+
+.btn-primary
+{
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+.field-header
+{
+    height: 12px;
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    color: #3C5AA8;
+    opacity: 0.4;
+}
+
+.label
+{
+    width: 174px;
+    height: 15px;
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+}
+body
+{
+    background: #F9F9F9;
+}
+
+.input-block:invalid{
+    background-color: lightcoral;
+}
+.input-block
+{
+    width: 150px;
+    height: 28px;
+    background: #FFFFFF;
+    border-radius: 20px;
+    border-width:0px;
+    margin-right:20px;
+    text-align:center;
+}
+.addButton{
+}
+.add-button > .plus{
+    display:inline-block;
+    background:none;
+}
+.add-button > .button-text{
+    display:inline-block;
+}
+.plus
+{
+
+}
+
+    .plus > .line-horizontal
+    {
+     position:relative;
+        display: inline-block;
+        width: 0px;
+        height: 16px;
+        left:8px;
+        border: 1px solid #5D6D97;
+        transform: rotate(90deg);
+    }
+
+    .plus > .line-vertical
+    {
+        display:inline-block;
+        position:relative;
+        width: 0px;
+        left:7px;
+        margin-right:16px;
+        height: 16px;
+        border: 1px solid #5D6D97;
+    }
