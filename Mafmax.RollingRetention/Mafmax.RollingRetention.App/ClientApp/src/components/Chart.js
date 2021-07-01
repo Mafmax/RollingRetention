@@ -81,11 +81,11 @@ export class Chart extends Component {
                     this.ctx.fillStyle = this.options.gridColor;
                     this.ctx.textBaseline = "bottom";
                     this.ctx.font = "bold 10px Arial";
-                    this.ctx.fillText(gridValue, offsetX+10, gridY - 2);
+                    this.ctx.fillText(gridValue, offsetX + 10, gridY - 2);
                     this.ctx.restore();
 
                     gridValue += maxValue * 0.05;
-                    gridValue = Number(gridValue.toFixed(2));
+                    gridValue = Math.ceil(gridValue);
                 }
 
                 //drawing the bars
@@ -95,7 +95,7 @@ export class Chart extends Component {
                 for (var i = 0; i < data.length; i++) {
                     var val = data[i].frequency;
                     var barHeight = Math.round(canvasActualHeight * val / maxValue);
-                    let upperLeftCornerX = offsetX+10+ this.options.padding + i * barSize;
+                    let upperLeftCornerX = offsetX + 10 + this.options.padding + i * barSize;
                     let color = this.colors[i % this.colors.length];
                     drawBar(
                         this.ctx,
@@ -111,11 +111,11 @@ export class Chart extends Component {
                     this.ctx.textAlign = "center";
                     this.ctx.fillStyle = color;
                     this.ctx.font = "bold 14px Arial";
-                    if (data[i].frequency > 0) {
 
                         this.ctx.fillText(data[i].value, upperLeftCornerX + barSize / 2, this.canvas.height - this.options.padding / 2);
+                    if (data[i].frequency > 0) {
 
-                    this.ctx.fillStyle = "#000000";
+                        this.ctx.fillStyle = "#000000";
                         this.ctx.fillText(data[i].frequency, upperLeftCornerX + barSize / 2, this.canvas.height - this.options.padding - barHeight);
                     }
                     this.ctx.restore();
@@ -125,7 +125,7 @@ export class Chart extends Component {
                 this.ctx.textAlign = "center";
                 this.ctx.fillStyle = "#000000";
                 this.ctx.font = "bold 14px Arial";
-                    this.ctx.fillText("Life Cycle", canvasActualWidth/2, this.canvas.height );
+                this.ctx.fillText("Life Cycle", canvasActualWidth / 2, this.canvas.height);
                 this.ctx.restore();
 
                 this.ctx.save();
@@ -137,7 +137,7 @@ export class Chart extends Component {
                 ctx.textAlign = "center";
                 var str = "Frequency";
                 for (var i = 0; i < str.length; i++) {
-                    ctx.fillText(str[i], 10, 80+20 * (i + 1));
+                    ctx.fillText(str[i], 10, 80 + 20 * (i + 1));
                 }
                 this.ctx.restore();
 

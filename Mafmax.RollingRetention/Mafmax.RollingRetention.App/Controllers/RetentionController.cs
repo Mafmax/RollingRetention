@@ -29,7 +29,7 @@ namespace Mafmax.RollingRetention.App.Controllers
         }
         
         [HttpPost("add")]
-        public void PostTest([FromBody] UserRetentionDto[] users)
+        public void Add([FromBody] UserRetentionDto[] users)
         {
             retentionService.SaveUserRetention(users);
         }
