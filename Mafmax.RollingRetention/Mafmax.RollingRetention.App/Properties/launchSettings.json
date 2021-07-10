@@ -18,7 +18,7 @@
     "Mafmax.RollingRetention.App": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "http://localhost:5201",
+      "applicationUrl": "http://localhost:5000;http://localhost:5001",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
